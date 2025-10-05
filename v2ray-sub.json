@@ -1,0 +1,15 @@
+[
+  {
+    "v": "2",
+    "ps": "x2key-vmess",
+    "add": "v2ray-render-dx4x.onrender.com",
+    "port": "443",
+    "id": "b3f2c8e1-7c4a-4b2e-9e3f-8a1e4d9f1a2c",
+    "aid": "0",
+    "net": "ws",
+    "type": "none",
+    "host": "v2ray-render-dx4x.onrender.com",
+    "path": "/proxy",
+    "tls": "tls"
+  }
+]
