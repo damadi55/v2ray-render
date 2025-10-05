@@ -1,0 +1,68 @@
+proxies:
+  - name: "vmess"
+    type: vmess
+    server: v2ray-render-dx4x.onrender.com
+    port: 443
+    uuid: b3f2c8e1-7c4a-4b2e-9e3f-8a1e4d9f1a2c
+    alterId: 0
+    cipher: auto
+    tls: true
+    network: ws
+    ws-opts:
+      path: /proxy
+      headers:
+        Host: v2ray-render-dx4x.onrender.com
+    skip-cert-verify: true
+    udp: true
+
+  - name: "vless"
+    type: vless
+    server: v2ray-render-dx4x.onrender.com
+    port: 443
+    uuid: b3f2c8e1-7c4a-4b2e-9e3f-8a1e4d9f1a2c
+    tls: true
+    network: ws
+    ws-opts:
+      path: /proxy
+      headers:
+        Host: v2ray-render-dx4x.onrender.com
+    udp: true
+
+  - name: "reality"
+    type: vless
+    server: v2ray-render-dx4x.onrender.com
+    port: 443
+    uuid: b3f2c8e1-7c4a-4b2e-9e3f-8a1e4d9f1a2c
+    tls: true
+    reality-opts:
+      public-key: 6d3d2c2e4f6a5b7c8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d
+      short-id: 123abc
+      spider-x: /proxy
+      fingerprint: chrome
+    udp: true
+
+  - name: "shadowsocks"
+    type: ss
+    server: v2ray-render-dx4x.onrender.com
+    port: 443
+    cipher: aes-128-gcm
+    password: x2key-fast-ss
+    udp: true
+
+proxy-groups:
+  - name: "Auto"
+    type: url-test
+    proxies:
+      - vmess
+      - vless
+      - reality
+      - shadowsocks
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+
+rules:
+  - DOMAIN-SUFFIX,telegram.org,Auto
+  - DOMAIN-SUFFIX,youtube.com,Auto
+  - DOMAIN-SUFFIX,instagram.com,Auto
+  - MATCH,Auto
